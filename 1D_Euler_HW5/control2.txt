@@ -1,0 +1,78 @@
+//////Problem2: SOD Shock (change file name to control.txt to run)\\\\\\
+ 
+/*******Input Section**********/
+Domain
+x0 0.0
+xn 1.0
+cells 100
+/////////////////
+
+
+InitialConditions 3
+\\\\
+rho
+2                  //(This specifies the number of divisions made in domain)
+1 if [ x0 0.5 )
+0.125 if [ 0.5 xn ]
+////
+p
+2 
+1 if [ x0 0.5 )
+0.1 if [ 0.5 xn ]
+////
+ux
+1
+0
+///////////////////
+End_Initial_Conditions
+
+
+PolyDegree 1    //DG(P_n) corresponds to n+1 i.e. for DG(P_0) enter 1 and so on
+//////////////////
+
+totaltime 0.2
+///////////////
+
+Flux Scheme
+//
+//Van-Leer
+Steger-Warming
+//Godunov
+//////////////
+
+
+Time Control
+
+CFL 0.1
+//timestep 0.001
+/////////////
+
+gamma 1.4
+////////////
+
+Boundary_Conditions
+//periodic
+extrapolated
+
+Time Integration Runge-Kutta (TVD)
+Stages 3
+
+/**********End of Input Section***********/
+
+
+
+/******Instructions*******/
+ 
+
+1. To compile : g++ main.cpp
+
+2. Comment out inactive schemes for a run. Also keep only time control active (i.e. Either CFL or timestep)
+
+3. Do not make changes in the Input Section to the keywords. Change Values as
+   required.
+
+4. Results are generated in out.txt file.
+
+5. To run: ./a.out
+
+   
