@@ -1,0 +1,71 @@
+/*******Input Section**********/
+Domain
+x0 0.0
+xn 1.0
+cells 100
+/////////////////
+
+
+InitialConditions
+3                  //(This specifies the number of divisions made in domain)
+exp(-200*(pow(x-0.3,2))) if [x0 0.6]
+1 if [0.6 0.8]
+0 if [0.8 xn]
+///////////////////
+
+
+PolyDegree 1
+//////////////////
+
+
+CFL 0.5
+////////////////
+
+
+a 1
+////////////////
+
+totaltime 5
+///////////////
+
+Time Integration Runge-Kutta (TVD)
+Stages 3
+//////////////////
+
+
+Reconstruction
+
+//Fromm
+//Beam-Warming
+//Lax-Wendroff
+//Minmod
+MC_limiter
+
+/**********End of Input Section***********/
+
+
+
+/******Instructions*******/
+1. The program requires 3 header files for compilation 
+   (a) exprtk.hpp - External OpenSource header file to read any input 
+                    mathematical expression and find its value. This file allows
+                    expressions to be input in control file for Initial conditions
+   (b) controlinput.h - Contains Commands for reading the control file and generating
+                        initial data
+   (c) rhsvector.h    - Contains functions for computing right hand side of advection equation
+
+2. The section above is input to be read. Simply change corresponding values for 
+   different parameters.
+   
+   For Initial conditions different expression may be used and their ranges 
+   specified for the domain. However the number of divisions of domain need to
+   specified first. The format for the initial conditions must be as stated.
+
+3. Do not make changes in the Input Section to the keywords. Change Values as
+   required.
+
+4. Results are generated in out.txt file in the format:
+
+   'x' 'InitialSoln' 'FinalSoln'
+
+   
