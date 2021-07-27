@@ -1,0 +1,53 @@
+/******************Input Section*******************//
+Initial Conditions
+rho_inf 1
+v_inf 1
+M_inf 1.1
+angle_of_attack 0
+
+gamma 1.4
+
+CFL 1
+
+/////////////////////Select number of Runge-Kutta Stages/////////////
+Stages 3
+
+Totalsteps 100000
+////////////////////Time Stepping Scheme Selection///////////////////
+//Global-Step
+Local-Step
+
+/////////////////////////FluxScheme Selection/////////////////////////
+//Van-Leer
+Reconstruct
+
+//////////////////Limiter Selection (Valid with Reconstruct only)///////////////
+//Barth-Jasperson
+Venkatakrishnan
+
+///////////////////////Case Selection////////////////////
+//NACA0012
+//Cylinder-medium
+//Cylinder-fine
+//Cylinder-veryfine
+//Cylinder-coarse
+Channel
+/*****************End of Input Section*************************//
+
+**************************************Instructions******************************
+1. Compilation
+       g++ main.cpp
+
+2. Now to run the program:
+   ./a.out
+
+3. Control File inputs
+   This file specifies all inputs to the program. The gridfiles are read from 
+   'gridfile.txt' which must be present in the respective folders for each of the
+   cases. Select a case by un-commenting it above. The other inactive cases must
+   be commented out using '//'.
+
+   Do not edit keywords in input section. Only comment inputs and change values
+   as required.
+   
+   To run the second case change name of file control2.txt to control.txt.
